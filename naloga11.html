@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<meta charset = utf8>
+<html>
+<head>
+    <title>Primer z grafom</title>
+</head>
+
+<body>
+
+<p></p>
+
+PWM: <input id="PWM" value=100 />
+<button id="gumbPošljiPWM" onClick="pošljiPWM()">Pošlji PWM</button>
+
+<br>
+<p></p>
+<p></p>
+<button id="pomik0" onClick="pomik0();">pomik0</button>
+<button id="pomik45" onClick="pomik45();">pomik45</button>
+<button id="pomik90" onClick="pomik90();">pomik90</button>
+<button id="pomik135" onClick="pomik135();">pomik135</button>
+<button id="pomik180" onClick="pomik180();">pomik180</button>
+<p></p>
+<button id="gumbplus10" onClick="gumbplus10()">+10</button>
+<button id="gumbminus10" onClick="gumbminus10()">-10</button>
+
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+
+var socket = io.connect("192.168.1.223:8080"); // povezava na strež.
+var vrednostPWM = 0;
+
+function pošljiPWM () {
+    vrednostSERVO = document.getElementById("PWM").value;
+    socket.emit("pošljiPWM", vrednostSERVO);
+}
+
+ function pomik0 () {
+    vrednostPWM = 0; 
+    document.getElementById("PWM").value = 0;
+    socket.emit("pošljiPWM", vrednostPWM);
+}
+function pomik45 () {
+    vrednostPWM = 45;
+    document.getElementById("PWM").value = 45;
+    socket.emit("pošljiPWM", vrednostPWM);
+}
+
+function pomik90 () {
+    vrednostPWM = 90;
+    document.getElementById("PWM").value = 90;
+    socket.emit("pošljiPWM", vrednostPWM);
+}
+function pomik135 () {
+    vrednostPWM = 135;
+    document.getElementById("PWM").value = 135;
+    socket.emit("pošljiPWM", vrednostPWM);
+}
+function pomik180 () {
+    vrednostPWM = 180;
+    document.getElementById("PWM").value =180;
+    socket.emit("pošljiPWM", vrednostPWM);
+}
+function gumbplus10 () {
+    if(vrednostPWM + 10 <= 180){
+    vrednostPWM += 10;
+    document.getElementById("PWM").value = vrednostPWM;
+    socket.emit("pošljiPWM", vrednostPWM); 
+    }
+    
+}
+function gumbminus10 () {
+    if(vrednostPWM - 10 >= 0){
+    vrednostPWM -= 10;
+    document.getElementById("PWM").value = vrednostPWM;
+    socket.emit("pošljiPWM", vrednostPWM);
+}
+};
+</script>
+
+
+</body>
+
+</html>

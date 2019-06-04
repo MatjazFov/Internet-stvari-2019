@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<meta charset = utf8>
+<html>
+<head>
+    <title>Primer z gumbi</title>
+</head>
+
+<body>
+<button style="width: 120px;" onClick="prižgi1_1()">Prižgi Z 1</button>
+<button style="width: 120px;" onClick="ugasni1_1()">Ugasni Z 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi2_1()">Prižgi M 1</button>
+<button style="width: 120px;" onClick="ugasni2_1()">Ugasni M 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi3_1()">Prižgi R 1</button>
+<button style="width: 120px;" onClick="ugasni3_1()">Ugasni R 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi4_1()">Prižgi O 1</button>
+<button style="width: 120px;" onClick="ugasni4_1()">Ugasni O 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi5_1()">Prižgi <br> Vse 1 </button>
+<button style="width: 120px;" onClick="ugasni5_1()">Ugasni <br> Vse 1 </button>
+<br>
+<button style="width: 120px;" onClick="prižgi1_2()">Prižgi Z 1</button>
+<button style="width: 120px;" onClick="ugasni1_2()">Ugasni Z 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi2_2()">Prižgi M 1</button>
+<button style="width: 120px;" onClick="ugasni2_2()">Ugasni M 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi3_2()">Prižgi R 1</button>
+<button style="width: 120px;" onClick="ugasni3_2()">Ugasni R 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi4_2()">Prižgi O 1</button>
+<button style="width: 120px;" onClick="ugasni4_2()">Ugasni O 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi5_2()">Prižgi <br> Vse 1 </button>
+<button style="width: 120px;" onClick="ugasni5_2()">Ugasni <br> Vse 1 </button>
+
+<br>
+<button style="width: 120px;" onClick="prižgi1_3()">Prižgi Z 1</button>
+<button style="width: 120px;" onClick="ugasni1_3()">Ugasni Z 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi2_3()">Prižgi M 1</button>
+<button style="width: 120px;" onClick="ugasni2_3()">Ugasni M 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi3_3()">Prižgi R 1</button>
+<button style="width: 120px;" onClick="ugasni3_3()">Ugasni R 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi4_3()">Prižgi O 1</button>
+<button style="width: 120px;" onClick="ugasni4_3()">Ugasni O 1</button>
+<p></p>
+<button style="width: 120px;" onClick="prižgi5_3()">Prižgi <br> Vse 1 </button>
+<button style="width: 120px;" onClick="ugasni5_3()">Ugasni <br> Vse 1 </button>
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+
+var socket1 = io.connect("192.168.1.223:8080"); // povez. prek vtičnika
+var socket2 = io.connect("192.168.1.209:8080"); // povez. prek vtičnika
+var socket3 = io.connect("192.168.1.200:8080"); // povez. prek vtičnika
+
+function prižgi1_1 () {
+    socket1.emit("ukazArduinu", 1); // na strežnik pošljem 1
+}
+function prižgi2_1 () {
+    socket1.emit("ukazArduinu", 3); // na strežnik pošljem 1
+}
+function prižgi3_1 () {
+    socket1.emit("ukazArduinu", 5); // na strežnik pošljem 1
+}
+function prižgi4_1 () {
+    socket1.emit("ukazArduinu", 7); // na strežnik pošljem 1
+}
+function prižgi5_1 () {
+    socket1.emit("ukazArduinu", 9); // na strežnik pošljem 1
+}
+
+function ugasni1_1 () {
+    socket1.emit("ukazArduinu", 0); // na strežnik pošljem 0
+}
+function ugasni2_1 () {
+    socket1.emit("ukazArduinu", 2); // na strežnik pošljem 0
+}  
+function ugasni3_1 () {
+    socket1.emit("ukazArduinu", 4); // na strežnik pošljem 0
+}
+function ugasni4_1 () {
+    socket1.emit("ukazArduinu", 6); // na strežnik pošljem 0
+}  
+function ugasni5_1 () {
+    socket1.emit("ukazArduinu", 8); // na strežnik pošljem 0
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//Drugi rpi
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function prižgi1_2 () {
+    socket2.emit("ukazArduinu", 1); // na strežnik pošljem 1
+}
+function prižgi2_2 () {
+    socket2.emit("ukazArduinu", 3); // na strežnik pošljem 1
+}
+function prižgi3_2 () {
+    socket2.emit("ukazArduinu", 5); // na strežnik pošljem 1
+}
+function prižgi4_2 () {
+    socket2.emit("ukazArduinu", 7); // na strežnik pošljem 1
+}
+function prižgi5_2 () {
+    socket2.emit("ukazArduinu", 9); // na strežnik pošljem 1
+}
+
+function ugasni1_2 () {
+    socket2.emit("ukazArduinu", 0); // na strežnik pošljem 0
+}
+function ugasni2_2 () {
+    socket2.emit("ukazArduinu", 2); // na strežnik pošljem 0
+}  
+function ugasni3_2 () {
+    socket2.emit("ukazArduinu", 4); // na strežnik pošljem 0
+}
+function ugasni4_2 () {
+    socket2.emit("ukazArduinu", 6); // na strežnik pošljem 0
+}  
+function ugasni5_2 () {
+    socket2.emit("ukazArduinu", 8); // na strežnik pošljem 0
+}
+
+//*****************************************************************
+//Tretji rpi
+//*******************************************************************
+function prižgi1_3 () {
+    socket3.emit("ukazArduinu", 1); // na strežnik pošljem 1
+}
+function prižgi2_3 () {
+    socket3.emit("ukazArduinu", 3); // na strežnik pošljem 1
+}
+function prižgi3_3 () {
+    socket3.emit("ukazArduinu", 5); // na strežnik pošljem 1
+}
+function prižgi4_3 () {
+    socket3.emit("ukazArduinu", 7); // na strežnik pošljem 1
+}
+function prižgi5_3 () {
+    socket3.emit("ukazArduinu", 9); // na strežnik pošljem 1
+}
+
+function ugasni1_3 () {
+    socket3.emit("ukazArduinu", 0); // na strežnik pošljem 0
+}
+function ugasni2_3 () {
+    socket3.emit("ukazArduinu", 2); // na strežnik pošljem 0
+}  
+function ugasni3_3 () {
+    socket3.emit("ukazArduinu", 4); // na strežnik pošljem 0
+}
+function ugasni4_3 () {
+    socket3.emit("ukazArduinu", 6); // na strežnik pošljem 0
+}  
+function ugasni5_3 () {
+    socket3.emit("ukazArduinu", 8); // na strežnik pošljem 0
+}
+
+</script>
+    
+</body>
+
+</html>

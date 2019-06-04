@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset = utf8>
+<html>
+
+<head>
+    <title>Primer s tipko</title>
+</head>
+
+<body>
+    
+<canvas id="mojePlatno" width="300" heigt="150" style="border:1px solid #d3d3d3";></canvas>
+
+<div id="divZaIzpis"></div>
+
+<br>
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript">
+"use strict"; // za uporabo razredov ("class")
+
+var divZaIzpis = document.getElementById("divZaIzpis");
+// spremenljivka za izpis sporočil
+
+function log(sporočilo) {
+    return "<div>" + sporočilo + "</div>";
+}
+
+divZaIzpis.innerHTML += log("Pritisnite tipko na vezju");
+
+var socket = io.connect("192.168.1.223:8080"); // povezava preko vtičnika
+
+// definicija spremenljivk za delo s platnom
+var canvas = document.getElementById("mojePlatno");
+var ctx = canvas.getContext("2d");
+
+socket.on("sporočiloKlientu", function (sporočilo){
+    divZaIzpis.innerHTML += log(sporočilo); // dodamo sporočilo
+    
+    if(sporočilo == "1") {
+        ctx.fillStyle = "#FA5000"; // določimo barvo
+        ctx.fillRect(0, 0, 300, 150); // x zg.1, y zg. 1. , širina, višina
+    }
+      if(sporočilo == "0") {
+        ctx.fillStyle = "#FFFFFF"; // določimo barvo
+        ctx.fillRect(0, 0, 300, 150); // x zg.1, y zg. 1. , širina, višina
+    }
+    
+});
+
+</script>
+    
+</body>
+    
+</html>
